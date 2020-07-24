@@ -1,10 +1,3 @@
-<?php
-
-    include '../connecting.php'
-
-?>
-
-
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -12,6 +5,13 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="en">
 <!--<![endif]-->
+
+<?php
+
+    include '../connecting.php'
+
+?>
+
 
 <head>
     <meta charset="utf-8">
@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="vendors/flag-icon-css/css/flag-icon.min.css">
     <link rel="stylesheet" href="vendors/selectFX/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="vendors/jqvmap/dist/jqvmap.min.css">
-    
+
 
     <link rel="stylesheet" href="assets/css/style.css">
 
@@ -39,6 +39,13 @@
 
 <body>
 
+<?php
+
+    $ra = $_GET['ra'];
+    $query = "SELECT * FROM aluno WHERE ra = '$ra'";
+
+      foreach($connect -> query($query) as $dados){
+?>
 
     <!-- Left Panel -->
 
@@ -114,14 +121,14 @@
         <div class="content mt-3">
             <div class="col-sm-12">
                 <div class="card-body card-block">
-                    <form action="insertAluno.php" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <form action="updateAluno?ra=<?php echo $ra;?>"method="POST" enctype="multipart/form-data" class="form-horizontal">
                         
                         <div class="row form-group">
                             <div class="col col-md-3">
                                 <label for="text-input" class=" form-control-label">Nome</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="text-input" name="nome" placeholder="Nome" class="form-control">
+                                <input type="text" id="text-input" name="nome" value="<?php echo $dados['nome'] ?>" class="form-control">
                             </div>
                         </div>
                         <div class="row form-group">
@@ -129,7 +136,7 @@
                                 <label for="email-input" class=" form-control-label">Email</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="email" id="email-input" name="email" placeholder="Email" class="form-control">
+                                <input type="email" id="email-input" name="email" value="<?php echo $dados['email'] ?>" class="form-control">
                             </div>
                         </div>
                         <div class="row form-group">
@@ -137,7 +144,7 @@
                                 <label for="text-input" class=" form-control-label">Telefone</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="text-input" name="telefone" placeholder="Telefone" class="form-control">
+                                <input type="text" id="text-input" name="telefone" value="<?php echo $dados['tel'] ?>" class="form-control">
                             </div>
                         </div>
                         <div class="row form-group">
@@ -145,7 +152,7 @@
                                 <label for="text-input" class=" form-control-label">Celular</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="text-input" name="celular" placeholder="Celular" class="form-control">
+                                <input type="text" id="text-input" name="celular" value="<?php echo $dados['celular'] ?>" class="form-control">
                             </div>
                         </div>
                         <div class="row form-group">
@@ -153,7 +160,7 @@
                                 <label for="text-input" class=" form-control-label">Data de Nascimento</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="date" id="text-input" name="nascimento" placeholder="Data de Nascimento" class="form-control">
+                                <input type="date" id="text-input" name="nascimento" value="<?php echo $dados['dataNascimento'] ?>" class="form-control">
                             </div>
                         </div>
 
@@ -162,7 +169,7 @@
                                 <label for="select" class=" form-control-label">Turma</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <select name="selectTurma" id="selectTurma" class="form-control">
+                                <select name="select" id="select" class="form-control">
                                     <option value="1C">1C</option>
                                     <option value="2C">2C</option>
                                     <option value="3C">3C</option>
@@ -178,9 +185,10 @@
                                 </select>
                             </div>
                         </div>
+      <?php } ?>
                         <div style="justify-content: center;margin-top:5%;" class="row form-group">
                             <div class="col col-md-1">
-                                <input type="submit" class="btn btn-primary btn-sm" value="Cadastrar">
+                                <input type="submit" class="btn btn-primary btn-sm" value="Atualizar">
                                     
                             </div>
                             <div class="col col-md-1">

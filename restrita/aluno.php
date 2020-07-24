@@ -83,17 +83,23 @@
     <!-- Right Panel -->
 
     <div id="right-panel"  class="table-dark right-panel">
+
         <!-- Header-->
         <header style="background-color:#272c33;" id="header" class="header">
+
             <div  class="header-menu">
+
                 <div class="col-sm-7">
                     <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    
                 </div>
+
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
                         </a>
+
                         <div class="user-menu dropdown-menu">
                             <a class="nav-link" href="perfil.php"><i class="fa fa-user"></i> Perfil</a>
 
@@ -102,12 +108,57 @@
                     </div>
                 </div>
             </div>
+
         </header><!-- /header -->
         <!-- Header-->
+
         <div class="content table-dark mt-3">
-     
-         
-               
+            
+            <div class="table-dark col-sm-12">
+                <div class="table-dark card">
+                            <div style="text-align: center;background-color: #212529;" class="card-header">
+                                <strong class="table-dark card-title">Alunos</strong>
+                            </div>
+                            <div style="text-align: center;" class="table-responsive table-dark card-body">
+                                <table  class="table1 table table-striped table-dark">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th class="bg-dark " style="color:white">Ra</th>
+                                            <th class="bg-dark" style="color:white">Nome</th>
+                                            <th class="bg-dark" style="color:white">Turma</th>
+                                            <th class="bg-dark" style="color:white">Telefone</th>
+                                            <th class="bg-dark" style="color:white">Email</th>
+                                            <th class="bg-dark" style="color:white">Celular</th>
+                                            <th class="bg-dark" style="color:white"><a href="form_cad_aluno.php">Novo <i class="fa fa-plus-square" aria-hidden="true"></i></a></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-dark">
+                                    <?php
+                                        $query = "SELECT *from aluno";
+
+                                        foreach($connect -> query($query) as $linha){
+                                            echo "<tr>";
+                                                echo"<td>".$linha['ra']."</td>";
+                                                echo"<td>".$linha['nome']."</td>";
+                                                echo"<td>".$linha['turma']."</td>";
+                                                echo"<td>".$linha['tel']."</td>";
+                                                echo"<td>".$linha['email']."</td>";
+                                                echo"<td>".$linha['celular']."</td>";
+                                        ?>
+                                                    <td style="text-align:center;">
+                                                    <a href="form_upd_aluno.php?ra=<?php echo $linha['ra'];?>" ><i class="fa fa-pencil" aria-hidden="true"></i></a> |
+                                                    
+                                                    <a onclick="confirmar()" href="deleteAluno.php?ra=<?php echo $linha['ra'];?>"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                                    </td>      
+                                                    <?php
+                                                    echo"</tr>";
+                                        }
+                                                    ?>       
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+            </div>
 
        
         </div> <!-- .content -->
@@ -142,6 +193,8 @@
     <script src="vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
     <script src="vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
     <script>
+      
+
         $(document).ready(function() {
            
             $('.table1').DataTable({
@@ -150,14 +203,7 @@
 
             }
         });
-
-        $('.table2').DataTable({
-            "language": {
-                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
-
-            }
-        });
-} );
+        } );
     </script>
 
 </body>

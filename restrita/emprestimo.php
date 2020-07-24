@@ -83,17 +83,23 @@
     <!-- Right Panel -->
 
     <div id="right-panel"  class="table-dark right-panel">
+
         <!-- Header-->
         <header style="background-color:#272c33;" id="header" class="header">
+
             <div  class="header-menu">
+
                 <div class="col-sm-7">
                     <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    
                 </div>
+
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
                         </a>
+
                         <div class="user-menu dropdown-menu">
                             <a class="nav-link" href="perfil.php"><i class="fa fa-user"></i> Perfil</a>
 
@@ -102,12 +108,67 @@
                     </div>
                 </div>
             </div>
+
         </header><!-- /header -->
         <!-- Header-->
+
         <div class="content table-dark mt-3">
      
-         
-               
+            <div class="table-dark col-sm-12">
+                <div class="table-dark card">
+                            <div style="text-align: center;background-color: #212529;" class="card-header">
+                                <strong class="table-dark card-title">Empréstimos</strong>
+                            </div>
+                            <div style="text-align: center;" class="table-responsive table-dark card-body">
+                                <table  class="table1 table table-striped table-dark">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th class="bg-dark " style="color:white">Código Empréstimo</th>
+                                            <th class="bg-dark " style="color:white">Data de Empréstimo</th>
+                                            <th class="bg-dark" style="color:white">Data de Devolução</th>
+                                            <th class="bg-dark" style="color:white">Aluno</th>
+                                            <th class="bg-dark" style="color:white">Funcionário</th>
+                                            <th class="bg-dark" style="color:white">Livro</th>
+                                            <th class="bg-dark" style="color:white">Opções</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-dark">
+                                    <?php
+                                        $query = "SELECT 
+                                        em.codEmprestimo,
+                                        em.data_emprestimo as dataEmprestimo,
+                                        em.data_devolucao as dataDevolucao,
+                                        a.nome as nomeAluno,
+                                        b.nome as nomeBibliotecario,
+                                        l.titulo as nomeLivro
+                                        FROM emprestimo_devolucao as em 
+                                          INNER JOIN aluno AS a on (em.ra = a.ra)
+                                          INNER JOIN bibliotecario AS b on (em.codfuncionario = b.codfuncionario)
+                                          INNER JOIN livros AS l on (em.codlivro = l.codlivro)";
+
+                                        foreach($connect -> query($query) as $linha){
+                                            echo "<tr>";
+                                                echo"<td>".$linha['codEmprestimo']."</td>";
+                                                echo"<td>".$linha['dataEmprestimo']."</td>";
+                                                echo"<td>".$linha['dataDevolucao']."</td>";
+                                                echo"<td>".$linha['nomeAluno']."</td>";
+                                                echo"<td>".$linha['nomeBibliotecario']."</td>";
+                                                echo"<td>".$linha['nomeLivro']."</td>";
+                                        ?>
+                                                    <td style="text-align:center;">
+                                                    <a href="form_upd_aluno.php?ra=<?php echo $linha['codEmprestimo'];?>" ><i class="fa fa-pencil" aria-hidden="true"></i></a> |
+                                                    
+                                                    <a href="deleteAluno.php?ra=<?php echo $linha['codEmprestimo'];?>"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                                    </td>      
+                                                    <?php
+                                                    echo"</tr>";
+                                        }
+                                                    ?>       
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+            </div>
 
        
         </div> <!-- .content -->

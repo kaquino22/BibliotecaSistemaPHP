@@ -33,9 +33,7 @@
 <body>
 
 
-    <!-- Left Panel -->
-
-    <aside id="left-panel" class="left-panel">
+<aside id="left-panel" class="left-panel">
         <nav class="navbar navbar-expand-sm navbar-default">
 
             <div class="navbar-header">
@@ -46,32 +44,26 @@
                 <a class="navbar-brand hidden" href="index.php"><img src="images/logo2.png" alt="Logo"></a>
             </div>
 
+
+            
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
                         <a href="index.php"> <i class="menu-icon fa fa-dashboard"></i>Painel de Controle </a>
                     </li>
                     <h3 class="menu-title">Menu de Opções</h3><!-- /.menu-title -->
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Alunos</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-puzzle-piece"></i><a href="form_cad_aluno.php">Cadastrar Aluno</a></li>
-                            
-                        </ul>
+
+                    <li class="active">
+                        <a href="aluno.php"> <i class="menu-icon fa fa-user-o"></i>Alunos</a>
                     </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Livros</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="form_cad_livro.php">Cadastrar Livro</a></li>
-                            
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="emprestimos.php"  aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Empréstimos</a>
-                        
+                   
+                    <li class="active">
+                        <a href="livro.php"> <i class="menu-icon fa fa-book"></i>Livros</a>
                     </li>
 
-                    
+                    <li class="active">
+                        <a href="emprestimo.php"> <i class="menu-icon fa fa-share-square-o"></i>Empréstimos</a>
+                    </li>       
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -81,12 +73,12 @@
 
     <!-- Right Panel -->
 
-    <div id="right-panel" class="right-panel">
+    <div id="right-panel"  class="table-dark right-panel">
 
         <!-- Header-->
-        <header id="header" class="header">
+        <header style="background-color:#272c33;" id="header" class="header">
 
-            <div class="header-menu">
+            <div  class="header-menu">
 
                 <div class="col-sm-7">
                     <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
@@ -105,33 +97,9 @@
                             <a class="nav-link" href="sair.php"><i class="fa fa-power-off"></i> Sair</a>
                         </div>
                     </div>
-
-                    
-
                 </div>
             </div>
 
-        </header><!-- /header -->
-        <!-- Header-->
-
-        <div class="breadcrumbs">
-            <div class="col-sm-4">
-                <div class="page-header float-left">
-                    <div class="page-title">
-                        <h1>Cadastro de Livro</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-8">
-                <div class="page-header float-right">
-                    <div class="page-title">
-                        <ol class="breadcrumb text-right">
-                            <li class="active">Painel de Controle</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <div class="content mt-3">
             <div class="col-sm-12">

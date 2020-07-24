@@ -83,17 +83,23 @@
     <!-- Right Panel -->
 
     <div id="right-panel"  class="table-dark right-panel">
+
         <!-- Header-->
         <header style="background-color:#272c33;" id="header" class="header">
+
             <div  class="header-menu">
+
                 <div class="col-sm-7">
                     <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    
                 </div>
+
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
                         </a>
+
                         <div class="user-menu dropdown-menu">
                             <a class="nav-link" href="perfil.php"><i class="fa fa-user"></i> Perfil</a>
 
@@ -102,12 +108,57 @@
                     </div>
                 </div>
             </div>
+
         </header><!-- /header -->
         <!-- Header-->
+
         <div class="content table-dark mt-3">
      
-         
-               
+            <div class="table-dark col-sm-12">
+                <div class="table-dark card">
+                            <div style="text-align: center;background-color: #212529;" class="card-header">
+                                <strong class="table-dark card-title">Livros</strong>
+                            </div>
+                            <div style="text-align: center;" class="table-responsive table-dark card-body">
+                                <table  class="table1 table table-striped table-dark">
+                                    <thead class="table-dark">
+                                        <tr>
+                                            <th class="bg-dark " style="color:white">Código Livro</th>
+                                            <th class="bg-dark" style="color:white">Título</th>
+                                            <th class="bg-dark" style="color:white">Autor</th>
+                                            <th class="bg-dark" style="color:white">Gênero</th>
+                                            <th class="bg-dark" style="color:white">Editora</th>
+                                            <th class="bg-dark" style="color:white">Exemplares</th>
+                                            <th class="bg-dark" style="color:white"><a href="form_cad_livro.php">Novo <i class="fa fa-plus-square" aria-hidden="true"></i></a></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-dark">
+                                    <?php
+                                        $query = "SELECT *from livros";
+
+                                        foreach($connect -> query($query) as $linha){
+                                            echo "<tr>";
+                                                echo"<td>".$linha['codlivro']."</td>";
+                                                echo"<td>".$linha['titulo']."</td>";
+                                                echo"<td>".$linha['autor']."</td>";
+                                                echo"<td>".$linha['genero']."</td>";
+                                                echo"<td>".$linha['editora']."</td>";
+                                                echo"<td>".$linha['qtdeExemplares']."</td>";
+                                        ?>
+                                                    <td style="text-align:center;">
+                                                    <a href="form_upd_aluno.php?ra=<?php echo $linha['codlivro'];?>" ><i class="fa fa-pencil" aria-hidden="true"></i></a> |
+                                                    
+                                                    <a href="deleteAluno.php?ra=<?php echo $linha['codlivro'];?>"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                                    </td>      
+                                                    <?php
+                                                    echo"</tr>";
+                                        }
+                                                    ?>       
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+            </div>
 
        
         </div> <!-- .content -->

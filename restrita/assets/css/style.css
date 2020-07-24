@@ -2305,6 +2305,10 @@ header .form-inline {
 .vue-lists ul {
   padding-left: 30px; }
 
+  .fundoBiblioteca{
+    background-image: url('images/livros.png');
+  }
+
 .card .dropdown.float-right .dropdown-menu {
   left: inherit !important;
   right: 0 !important;

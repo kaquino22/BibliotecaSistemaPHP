@@ -14,5 +14,5 @@
 
     $query->execute();
 
-    header('Location:index.php');
+    header('Location:aluno.php');
 ?>
